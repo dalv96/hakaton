@@ -91,8 +91,7 @@ const testThree = {
                             val: 6,
                             child: [
                                 {
-                                    val: 7,
-                                    child: []
+                                    val: 7
                                 }
                             ]
                         }
@@ -129,7 +128,33 @@ function showThreeWidth(three) {
 
         queue.push(...currentItem.child);
     }
-
 }
 
-showThreeWidth(testThree);
+function getPrimeNumbers(max) {
+    const simple = [];
+
+    for (let i = 3; i <= max; i+=2) {
+        let isSimple = true;
+
+        for (let j = 0; j < simple.length; j++) {
+            const remaind = i % simple[j];
+
+            if ( remaind == 0 ) {
+                isSimple = false;
+                break;
+            }
+
+            if (simple[j] > Math.sqrt(i)) {
+                break;
+            }
+        }
+
+        if (isSimple) simple.push(i);
+    }
+
+    if (max >= 2) simple.unshift(2);
+
+    console.log(simple);
+}
+
+getPrimeNumbers(10);
