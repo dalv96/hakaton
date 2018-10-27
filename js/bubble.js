@@ -20,7 +20,7 @@ function binarySearch(array, element) {
     let offset = 0;
     let lastIndex = -1;
     let i = 0;
-    
+
     while (center - offset !== 0) {
         let center = Math.floor( array.length / (2 * (i + 1)) ) + offset;
 
@@ -36,4 +36,35 @@ function binarySearch(array, element) {
     }
 
     return lastIndex;
+}
+
+function balanceOk(str) {
+    let stack = [];
+    const brackets = {
+        ')': '(',
+        ']': '[',
+        '}': '{',
+    };
+
+    for (let i = 0; i < str.length; i++) {
+        switch(str[i]) {
+            case '[':
+            case '(':
+            case '{':
+                stack.push(str[i]);
+            break;
+
+            case ']':
+            case ')':
+            case '}':
+                if ( stack[stack.length - 1] === brackets[str[i]] ) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+                break;
+        }
+    }
+
+    return (stack.length === 0)?true:false;
 }
