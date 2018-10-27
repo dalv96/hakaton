@@ -15,3 +15,23 @@ function bubbleSort(array) {
 
     return array;
 }
+
+function binarySearch(array, element) {
+    let offset = 0;
+
+    for (let i = 0; i < array.length; i++) {
+        let center = Math.floor( array.length / (2 * (i + 1)) ) + offset;
+
+        if (array[center] == element) {
+            return center;
+        }
+
+        if (array[center] < element) {
+            offset = center + 1;
+        }
+
+        if (center - offset === 0) return -1;
+    }
+
+    return -1;
+}
