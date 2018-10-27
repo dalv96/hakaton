@@ -8,7 +8,6 @@ function bubbleSort(array) {
 
                array[j+1] = array[j];
                array[j] = tmp;
-
            }
            
        } 
