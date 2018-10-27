@@ -76,7 +76,7 @@ const testThree = {
             val: 2,
             child: [
                 {
-                    val: 4,
+                    val: 3,
                     child: [
                         {
                             val: 5,
@@ -85,8 +85,18 @@ const testThree = {
                     ]
                 },
                 {
-                    val: 3,
-                    child: []
+                    val: 4,
+                    child: [
+                        {
+                            val: 6,
+                            child: [
+                                {
+                                    val: 7,
+                                    child: []
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -110,4 +120,16 @@ function showThree(three) {
     console.log(three.val);
 }
 
-showThree(testThree);
+function showThreeWidth(three) {
+    let queue = [three];
+
+    for (let i = 0; i < queue.length; i++) {
+        let currentItem = queue[i];
+        console.log(currentItem.val);
+
+        queue.push(...currentItem.child);
+    }
+
+}
+
+showThreeWidth(testThree);
