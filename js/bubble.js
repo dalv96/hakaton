@@ -68,3 +68,48 @@ function balanceOk(str) {
 
     return (stack.length === 0)?true:false;
 }
+
+const testThree = {
+    val: 1,
+    child: [
+        {
+            val: 2,
+            child: [
+                {
+                    val: 3,
+                    child: []
+                },
+                {
+                    val: 4,
+                    child: [
+                        {
+                            val: 5,
+                            child: []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+function showThree(three) {
+    let tmp = three;
+    let stack = [];
+    let i = 0;
+    
+    do {
+        if (tmp.child.length == 0) {
+            console.log(tmp.val);
+            tmp = stack.pop();
+        } else {
+            stack.push(tmp);
+            tmp = tmp.child.pop();
+        }
+        i++;
+    } while (stack.length != 0);
+
+    console.log(three.val);
+}
+
+showThree(testThree);
