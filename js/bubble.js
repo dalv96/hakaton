@@ -157,4 +157,33 @@ function getPrimeNumbers(max) {
     console.log(simple);
 }
 
-getPrimeNumbers(10);
+function shakerSort(array) {
+    const sortedArray = [];
+    const someVar = array.length;
+    
+    for (let j = 0; j < someVar; j++) {
+        let max = -Infinity;
+        let maxId = -1;
+
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            
+            if (max < element) {
+                max = element;
+                maxId = i;
+            }
+        }
+        
+        // console.log(array);
+        
+        array.splice(maxId, 1);
+
+        sortedArray.push(max);
+    }
+
+    console.log(sortedArray);
+    
+    return sortedArray;  
+}
+
+shakerSort([10, 1,3,7, 5, 2, 4]);
